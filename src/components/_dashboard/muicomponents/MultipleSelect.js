@@ -32,6 +32,8 @@ const names = [
 ];
 const clientNames = ['MeruAccounting', 'Microsoft', 'Google'];
 const projectNames = ['Appdev', 'Research', 'Webdev'];
+const groupNames = ['Group by Client', 'Group by Task', 'Group by Project'];
+
 function getStyles(name, personName, theme) {
   return {
     fontWeight:
@@ -46,7 +48,7 @@ export default function MultipleSelect() {
   const [personName, setPersonName] = React.useState([]);
   const [clients, setClients] = React.useState([]);
   const [projects, setProjects] = React.useState([]);
-
+  const [group, setGroups] = React.useState([]);
   const handleChange = (event) => {
     const {
       target: { value }
@@ -57,11 +59,12 @@ export default function MultipleSelect() {
     );
     setClients(typeof value === 'string' ? value.split(',') : value);
     setProjects(typeof value === 'string' ? value.split(',') : value);
+    setGroups(typeof value === 'string' ? value.split(',') : value);
   };
 
   return (
     <div>
-      <FormControl sx={{ m: 1, width: 300 }}>
+      <FormControl sx={{ m: 2, width: 300 }}>
         <InputLabel id="demo-multiple-name-label">Select Employee and Groups</InputLabel>
         <Select
           labelId="demo-multiple-name-label"
@@ -69,7 +72,7 @@ export default function MultipleSelect() {
           multiple
           value={personName}
           onChange={handleChange}
-          input={<OutlinedInput label="Name" />}
+          input={<OutlinedInput label="Select Employee and Groups" />}
           MenuProps={MenuProps}
         >
           {names.map((name) => (
@@ -79,7 +82,7 @@ export default function MultipleSelect() {
           ))}
         </Select>
       </FormControl>
-      <FormControl sx={{ m: 1, width: 300 }}>
+      <FormControl sx={{ m: 2, width: 300 }}>
         <InputLabel id="demo-multiple-name-label">Select Clinet</InputLabel>
         <Select
           labelId="demo-multiple-name-label"
@@ -87,7 +90,7 @@ export default function MultipleSelect() {
           multiple
           value={clients}
           onChange={handleChange}
-          input={<OutlinedInput label="clients" />}
+          input={<OutlinedInput label="Select clients" />}
           MenuProps={MenuProps}
         >
           {clientNames.map((client) => (
@@ -97,14 +100,14 @@ export default function MultipleSelect() {
           ))}
         </Select>
       </FormControl>
-      <FormControl sx={{ m: 1, width: 300 }}>
+      <FormControl sx={{ m: 2, width: 300 }}>
         <InputLabel id="demo-multiple-name-label">Select Project</InputLabel>
         <Select
           labelId="demo-multiple-name-label"
           id="demo-multiple-name"
           value={projects}
           onChange={handleChange}
-          input={<OutlinedInput label="projects" />}
+          input={<OutlinedInput label="Select projects" />}
           multiple
           MenuProps={MenuProps}
         >
@@ -118,12 +121,30 @@ export default function MultipleSelect() {
       <Box
         component="form"
         sx={{
-          '& > :not(style)': { m: 1, width: 300 }
+          '& > :not(style)': { m: 2, width: 300 }
         }}
         noValidate
         autoComplete="off"
       >
         <TextField id="outlined-basic" label="Note contains text" variant="outlined" />
+        <FormControl sx={{ m: 2, width: 300 }}>
+          <InputLabel id="demo-multiple-name-label">Group by</InputLabel>
+          <Select
+            labelId="demo-multiple-name-label"
+            id="demo-multiple-name"
+            value={group}
+            onChange={handleChange}
+            input={<OutlinedInput label="Group by" />}
+            multiple
+            MenuProps={MenuProps}
+          >
+            {groupNames.map((group) => (
+              <MenuItem key={group} value={group} style={getStyles(group, projects, theme)}>
+                {group}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
       </Box>
     </div>
   );

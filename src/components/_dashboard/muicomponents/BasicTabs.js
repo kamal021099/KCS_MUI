@@ -1,11 +1,14 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import { Tabs, Container, Link, Grid } from '@mui/material';
+import { Tabs, Container, Link, Grid, Divider, Button } from '@mui/material';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import DatePicker from './DatePicker';
 import MultipleSelect from './MultipleSelect';
+import BarChart from './BarChart';
+import PieChart from './PieChart';
+import TreeView from './TreeView';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -124,6 +127,16 @@ export default function BasicTabs() {
                 <Link>Apps & Urls</Link>
               </Grid>
             </Grid>
+            <Container
+              sx={{ m: 3, display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}
+            >
+              <Button variant="outlined">Excel</Button>
+              <Button variant="outlined">Pdf</Button>
+              <Button variant="outlined">Share Report</Button>
+              <Button variant="outlined">Save Report</Button>
+              <Button variant="contained">Show Report</Button>
+            </Container>
+            <Divider />
           </Box>
           <Box sx={{ width: '100%' }}>
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
@@ -137,16 +150,33 @@ export default function BasicTabs() {
               </Tabs>
             </Box>
             <TabPanel value={value2} index={0}>
-              Item One
+              <Container sx={{ m: '3', hieght: '50', width: '400' }}>
+                <BarChart />
+              </Container>
+              <Divider />
+              <Typography sx={{ height: '10', width: '30' }}>Details about employee</Typography>
             </TabPanel>
             <TabPanel value={value2} index={1}>
-              Item Two
+              <BarChart />
             </TabPanel>
             <TabPanel value={value2} index={2}>
+              <Container sx={{ height: 400, width: 400 }}>
+                <PieChart />
+              </Container>
+            </TabPanel>
+            <TabPanel value={value2} index={3}>
+              Item Three
+            </TabPanel>
+            <TabPanel value={value2} index={4}>
+              Item Three
+            </TabPanel>
+            <TabPanel value={value2} index={5}>
               Item Three
             </TabPanel>
           </Box>
         </Container>
+        <Divider />
+        <TreeView />
       </TabPanel>
       <TabPanel value={value} index={1}>
         hello

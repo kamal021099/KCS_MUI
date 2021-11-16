@@ -8,6 +8,10 @@ import Container from '@mui/material/Container';
 // import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import SettingsIcon from '@mui/icons-material/Settings';
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
+import PageHeader from '../components/teams/PageHeader';
+
+// _____________________________________________________________________________________________________________
 
 export default function SimpleContainer() {
   return (
@@ -17,18 +21,7 @@ export default function SimpleContainer() {
         {/* <PageHeader title="User" subTitle="Manager" icon={<AdminPanelSettingsIcon />} /> */}
         <Box sx={{ bgcolor: '#f3e5f5', height: '100vh', width: 'xl' }}>
           <Grid item xs={3} sm={6} md={12}>
-            <Container
-              style={{
-                padding: '1rem',
-                fontSize: '1.5rem',
-                display: 'flex',
-                flexDirection: 'row',
-                justifyContent: 'space-between'
-              }}
-            >
-              Manager Dashboard
-              <SettingsIcon />
-            </Container>
+            <PageHeader title="Teams" subTitle="" icon={<AdminPanelSettingsIcon />} />
           </Grid>
         </Box>
       </Container>

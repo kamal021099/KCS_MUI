@@ -33,11 +33,11 @@ const sidebarConfig = [
     path: '/dashboard/teams',
     icon: <AdminPanelSettingsIcon />
   },
-  // {
-  //   title: 'product',
-  //   path: '/dashboard/products',
-  //   icon: getIcon(shoppingBagFill)
-  // },
+  {
+    title: 'Clients',
+    path: '/dashboard/clients',
+    icon: getIcon(shoppingBagFill)
+  },
   // {
   //   title: 'blog',
   //   path: '/dashboard/blog',

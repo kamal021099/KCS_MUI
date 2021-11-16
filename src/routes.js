@@ -13,6 +13,7 @@ import NotFound from './pages/Page404';
 import Teams from './pages/Teams';
 import Reports from './pages/Reports';
 import UserDetails from './pages/UserDetails';
+import Clients from './pages/Clients';
 // ----------------------------------------------------------------------
 
 export default function Router() {
@@ -28,7 +29,8 @@ export default function Router() {
         { path: 'blog', element: <Blog /> },
         { path: 'reports', element: <Reports /> },
         { path: 'teams', element: <Teams /> },
-        { path: 'userdetails', element: <UserDetails /> }
+        { path: 'userdetails', element: <UserDetails /> },
+        { path: 'clients', element: <Clients /> }
       ]
     },
     {
