@@ -15,7 +15,7 @@ export default function SimpleContainer() {
           <Box sx={{ pb: 5 }}>
             <Typography variant="h4">User, Welcome back</Typography>
           </Box>
-          <Box sx={{ bgcolor: '#f3e5f5', height: '100vh', width: 'xl' }}>
+          <Box sx={{ bgcolor: '', height: '130vh', width: 'xl' }}>
             <VerticalTabs />
           </Box>
         </Container>

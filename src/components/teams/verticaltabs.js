@@ -1,19 +1,10 @@
 import * as React from 'react';
 import { useContext } from 'react';
-import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
-import {
-  Box,
-  styled,
-  OutlinedInput,
-  filterName,
-  onFilterName,
-  InputAdornment,
-  Icon,
-  TextField
-} from '@mui/material';
+import PropTypes from 'prop-types';
+import { Box, styled, OutlinedInput, TextField } from '@mui/material';
 import { UserContext } from '../../contexts/UserContext';
 import Main from './Main';
 
@@ -29,6 +20,7 @@ const SearchStyle = styled(OutlinedInput)(({ theme }) => ({
     borderColor: `${theme.palette.grey[500_32]} !important`
   }
 }));
+
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -36,8 +28,8 @@ function TabPanel(props) {
     <div
       role="tabpanel"
       hidden={value !== index}
-      id={`vertical-tabpanel-${index}`}
-      aria-labelledby={`vertical-tab-${index}`}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
       {value === index && (
@@ -57,8 +49,8 @@ TabPanel.propTypes = {
 
 function a11yProps(index) {
   return {
-    id: `vertical-tab-${index}`,
-    'aria-controls': `vertical-tabpanel-${index}`
+    id: `simple-tab-${index}`,
+    'aria-controls': `simple-tabpanel-${index}`
   };
 }
 
@@ -73,59 +65,46 @@ export default function VerticalTabs() {
   return (
     <Box
       sx={{
-        flexGrow: 1,
         bgcolor: 'background.paper',
-        display: 'flex',
+        display: 'grid',
+        gridTemplateColumns: '20% 80% ',
         height: 400
         // flexDirection: 'column'
       }}
     >
-      <Tabs
-        orientation="vertical"
-        variant="scrollable"
-        value={value}
-        onChange={handleChange}
-        aria-label="Vertical tabs example"
-        sx={{ borderRight: 1, borderColor: 'divider', display: 'block' }}
-      >
-        <Box component="div">
+      <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
+        <Box component="div" sx={{ display: 'block' }}>
           <TextField fullWidth id="outlined-search" label="Search client" type="search" />
         </Box>
+        <Tabs
+          orientation="vertical"
+          variant="scrollable"
+          value={value}
+          onChange={handleChange}
+          aria-label="Vertical tabs example"
+          sx={{ borderRight: 1, borderColor: 'divider', display: 'block' }}
+        >
+          {User.map((user) => (
+            <Tab
+              fullWidth
+              label={
+                <Typography sx={{ textAlign: 'left' }} variant="h6">
+                  {user.name}{' '}
+                </Typography>
+              }
+              {...a11yProps(`${User.indexOf(user) + 1}`)}
+            />
+          ))}
+        </Tabs>
+      </Box>
+      <Box>
         {User.map((user) => (
-          <Tab label={user.name} {...a11yProps(`${User.indexOf(user)}`)} />
+          <Main value={value} index={User.indexOf(user)} />
         ))}
-
-        {/* <Tab label="Kamal Singh" {...a11yProps(1)} /> */}
-        {/* <Tab label="Naman Mathur" {...a11yProps(2)} />
-        <Tab label="Jay Mathew" {...a11yProps(3)} />
-        <Tab label="Jamie Sharma" {...a11yProps(4)} />
-        <Tab label="Harpreet Daniels" {...a11yProps(5)} />
-        <Tab label="J.K " {...a11yProps(6)} /> */}
-      </Tabs>
-      {/* {User.map((user) => (
-        <TabPanel value={value} index={`${User.indexOf(user)}`}>
-          <Main />
-        </TabPanel>
-      ))} */}
-
-      <TabPanel value={value} index={1}>
-        <Main />
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        Item Three
-      </TabPanel>
-      <TabPanel value={value} index={3}>
-        Item Four
-      </TabPanel>
-      <TabPanel value={value} index={4}>
-        Item Five
-      </TabPanel>
-      <TabPanel value={value} index={5}>
-        Item Six
-      </TabPanel>
-      <TabPanel value={value} index={6}>
-        Item Seven
-      </TabPanel>
+        {/* <TabPanel value={User[1].id} index={User[1].id} /> */}
+        {/* <TabPanel value={User[2].id} index={User[2].id} /> */}
+        {/* <TabPanel value={User[3].id} index={User[3].id} /> */}
+      </Box>
     </Box>
   );
 }
