@@ -16,6 +16,7 @@ import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
 import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
+import { Link as RouterLink } from 'react-router-dom';
 
 const icons = CircleIcon;
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -88,7 +89,7 @@ export default function ApiRefRowsGrid() {
             {rows.map((row) => (
               <StyledTableRow key={row.Employee}>
                 <StyledTableCell component="th" scope="row">
-                  {row.Employee}
+                  <RouterLink to="/dashboard/userdetails">{row.Employee}</RouterLink>
 
                   {/* <div>project placeholder</div> */}
                   <Chip label="Employee" color="success" size="small" />

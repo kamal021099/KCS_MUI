@@ -6,7 +6,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: '#fdfdff',
     width: '100%',
-    margin: 'auto'
+    margin: 'auto 0'
   },
   pageHeader: {
     padding: '32px',

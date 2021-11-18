@@ -1,5 +1,5 @@
 import React from 'react';
-import { CssBaseline, Paper, Box } from '@mui/material';
+import { CssBaseline, Paper, Box, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import GroupWorkIcon from '@mui/icons-material/GroupWork';
 import PageHeader from '../components/Clients/PageHeader';
@@ -26,8 +26,10 @@ export default function Clients() {
     <Box component="div" sx={{ width: '95%', margin: 'auto' }}>
       <ClientsContextProvider>
         <CssBaseline />
-        <PageHeader title="Clients" subTitle="Clients and Projects" icon={<GroupWorkIcon />} />
-
+        {/* <PageHeader title="Clients" subTitle="Clients and Projects" icon={<GroupWorkIcon />} /> */}
+        <Box sx={{ pb: 5 }}>
+          <Typography variant="h4">Hi, Welcome back</Typography>
+        </Box>
         <div className={classes.root}>
           <Sidebar />
 

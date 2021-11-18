@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
     textAlign: 'center',
     fontSize: '1rem',
-    backgroundColor: '#f0f0f0',
+    // backgroundColor: '#f0f0f0',
     borderRadius: '10%',
     '&:after': {
       outline: '1px solid black',

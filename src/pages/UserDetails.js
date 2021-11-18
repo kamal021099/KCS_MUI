@@ -1,23 +1,49 @@
 // import './UserDetails.css';
-import { CssBaseline } from '@mui/material';
+import { CssBaseline, Box, Container, Typography, Grid } from '@mui/material';
 import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
 
 import Sidebar from '../components/SideBar';
 import Timeline from '../components/Timeline';
 import PageHeader from '../components/PageHeader';
 import ScreenShots from '../components/ScreenShots';
+import {
+  Monthlyhours,
+  Weeklyhours,
+  AppBugReports,
+  AppItemOrders
+} from '../components/_dashboard/app';
 
-function UserDetails() {
+export default function UserDetails() {
   return (
-    <div>
+    <>
       <CssBaseline />
-      <PageHeader title="Kamal" subTitle="Timeline" icon={<AccessTimeFilledIcon />} />
-
-      <Timeline />
-      <Sidebar />
-      <ScreenShots />
-    </div>
+      <Container maxWidth="lg">
+        {/* <PageHeader title="User" subTitle="Manager" icon={<AdminPanelSettingsIcon />} /> */}
+        <Container maxWidth="lg">
+          <Box sx={{ pb: 5 }}>
+            <Typography variant="h4">Hi, Welcome back</Typography>
+          </Box>
+          <Grid container spacing={2}>
+            <Grid item xs={12} sm={6} md={3}>
+              <Monthlyhours />
+            </Grid>
+            <Grid item xs={12} sm={6} md={3}>
+              <Weeklyhours />
+            </Grid>
+            <Grid item xs={12} sm={6} md={3}>
+              <AppItemOrders />
+            </Grid>
+            <Grid item xs={12} sm={6} md={3}>
+              <AppBugReports />
+            </Grid>
+          </Grid>
+        </Container>
+        <Sidebar />
+        {/* <ScreenShots /> */}
+        {/* <Box sx={{ bgcolor: '#f3e5f5', height: '100vh', width: 'xl' }}>
+          <Timeline />
+        </Box> */}
+      </Container>
+    </>
   );
 }
-
-export default UserDetails;

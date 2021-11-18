@@ -199,12 +199,7 @@ export default function User() {
                           <TableCell component="th" scope="row" padding="none">
                             <Stack direction="row" alignItems="center" spacing={2}>
                               <Avatar alt={name} src={avatarUrl} />
-                              <Typography
-                                variant="subtitle2"
-                                noWrap
-                                Component={RouterLink}
-                                to="/UserDetails"
-                              >
+                              <Typography variant="subtitle2" noWrap>
                                 <RouterLink to="/dashboard/userdetails">{name}</RouterLink>
                               </Typography>
                             </Stack>
