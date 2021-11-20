@@ -57,13 +57,20 @@ export default function Main(props) {
       </>
     );
   };
-
+  const effectiveArr = [
+    'Screenshot,Activity Level tracking',
+    'Apps & Urls tracking',
+    'Weekly time limit after',
+    'Auto-pause tracking after',
+    'Allow adding Offline time',
+    'Notify when Screenshot is taken'
+  ];
   return (
     <>
       {value === index && (
         <Container
           component="div"
-          sx={{ border: 1, height: '140vh' }}
+          sx={{ border: 1, height: 'inherit' }}
           role="tabpanel"
           hidden={value !== index}
           id={`vertical-tabpanel-${index}`}
@@ -154,6 +161,17 @@ export default function Main(props) {
               <Link sx={{ pr: 1 }}>Add all</Link>
               <Link sx={{ pl: 1 }}>Remove all</Link>
               <Container sx={{ display: 'block' }}>{Labelconfig()}</Container>
+            </Box>
+            <Box sx={{ pt: 2 }}>
+              <Typography variant="h5">Effective Settings</Typography>
+              {effectiveArr.map((arr) => (
+                <Box sx={{ display: 'flex', flexDirection: 'rows' }}>
+                  <Typography varihant="h6" sx={{ pr: 2, color: 'success' }}>
+                    {arr}
+                  </Typography>
+                  <Link sx={{ pr: 1 }}>Link</Link>
+                </Box>
+              ))}
             </Box>
           </Typography>
         </Container>
