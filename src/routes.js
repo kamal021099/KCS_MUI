@@ -14,6 +14,9 @@ import Teams from './pages/Teams';
 import Reports from './pages/Reports';
 import UserDetails from './pages/UserDetails';
 import Clients from './pages/Clients';
+import Projects from './pages/Projects';
+import Settings from './pages/Settings';
+
 // ----------------------------------------------------------------------
 
 export default function Router() {
@@ -30,7 +33,9 @@ export default function Router() {
         { path: 'reports', element: <Reports /> },
         { path: 'teams', element: <Teams /> },
         { path: 'userdetails', element: <UserDetails /> },
-        { path: 'clients', element: <Clients /> }
+        { path: 'clients', element: <Clients /> },
+        { path: 'projects', element: <Projects /> },
+        { path: 'settings', element: <Settings /> }
       ]
     },
     {

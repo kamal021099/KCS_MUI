@@ -16,7 +16,6 @@ export default function SimpleContainer() {
     <>
       <CssBaseline />
       <Container maxWidth="lg">
-        {/* <PageHeader title="User" subTitle="Manager" icon={<AdminPanelSettingsIcon />} /> */}
         <Box sx={{ bgcolor: '#f3e5f5', height: '100vh', width: 'xl' }}>
           <Grid item xs={3} sm={6} md={12}>
             <Container

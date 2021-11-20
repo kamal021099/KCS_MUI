@@ -38,6 +38,27 @@ export const UserContextProvider = (props) => {
       email: 'ryanr@gmail.com',
       pay: 19,
       role: 'Manager'
+    },
+    {
+      name: 'Raksha',
+      id: 6,
+      email: 'raksha@gmail.com',
+      pay: 20,
+      role: 'Employee'
+    },
+    {
+      name: 'Surya',
+      id: 7,
+      email: 'surya@gmail.com',
+      pay: 13,
+      role: 'Employee'
+    },
+    {
+      name: 'Sushma',
+      id: 8,
+      email: 'susma@gmail.com',
+      pay: 13,
+      role: 'Employee'
     }
   ]);
   //   const [currentClient, setcurrentClient] = useState(User[0]);

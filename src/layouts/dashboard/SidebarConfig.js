@@ -38,6 +38,16 @@ const sidebarConfig = [
     path: '/dashboard/clients',
     icon: getIcon(shoppingBagFill)
   },
+  {
+    title: 'Projects',
+    path: '/dashboard/projects',
+    icon: getIcon(shoppingBagFill)
+  },
+  {
+    title: 'Settings',
+    path: '/dashboard/settings',
+    icon: getIcon(shoppingBagFill)
+  },
   // {
   //   title: 'blog',
   //   path: '/dashboard/blog',

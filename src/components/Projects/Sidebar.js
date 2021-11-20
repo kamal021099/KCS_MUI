@@ -22,10 +22,16 @@ export default function Sidebar() {
   const [newClientError, setnewClientError] = useState(false);
 
   // contexts
-  const { clients, currentClient, changeClient, addClient } = useContext(ClientsContext);
+  const { clients, currentClient, changeClient, addClient, currentProject, changeProject } =
+    useContext(ClientsContext);
 
   // labels for search box(autocomplete)
-  const clientsList = clients.map((client) => client.name);
+  const projectsList = [];
+  clients.forEach((client) => {
+    // eslint-disable-next-line prefer-template
+    client.projects.map((project) => projectsList.push(client.name + ':' + project.name));
+  });
+  // console.log(projectsList);
 
   // change currentclient on search
   const handleSearch = (e, value) => {
@@ -37,10 +43,18 @@ export default function Sidebar() {
     return changeClient(client[0]);
   };
 
-  // change currenclient on clients name click
+  // change currenclient on projects name click
   const handleClick = (e) => {
-    const client = clients.filter((client) => (client.name === e.target.textContent ? client : ''));
+    const client = clients.filter((client) =>
+      client.name === e.target.dataset.client ? client : ''
+    );
     changeClient(client[0]);
+    const project = client[0].projects.filter((project) =>
+      project.name === e.target.textContent ? project : ''
+    );
+
+    // const client = clients.filter((client) => (client.name === e.target.textContent ? client : ''));
+    changeProject(project[0]);
   };
 
   // add client in submit
@@ -92,38 +106,49 @@ export default function Sidebar() {
               onChange={handleSearch}
               disablePortal
               id="combo-box-demo"
-              options={clientsList}
-              renderInput={(params) => <TextField {...params} fullWidth label="Search client" />}
+              options={projectsList}
+              renderInput={(params) => <TextField {...params} fullWidth label="Search Project" />}
             />
           </div>
         </Box>
 
-        {/* clients list flex container */}
+        {/* clients and project tree view flex container */}
         <Box
           component="div"
           sx={{
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'flex-start',
-            maxHeight: '72%'
+            alignItems: 'flex-start'
           }}
         >
-          <TreeView
-            fullWidth
-            className={classes.root}
-            sx={{ width: '100%', overflowY: 'auto', overflowX: 'visible' }}
-          >
-            {clients.map((client) => (
+          {clients.map((client) => (
+            <TreeView
+              multiSelect={false}
+              fullWidth
+              className={classes.root}
+              defaultCollapseIcon={<ExpandMoreIcon />}
+              defaultExpandIcon={<ChevronRightIcon />}
+              sx={{ width: '100%', overflowY: 'auto' }}
+            >
               <TreeItem
-                onClick={handleClick}
+                sx={{}}
                 nodeId={clients.indexOf(client) + 1}
                 className={classes.treeItem}
                 label={<Typography variant="h4">{client.name}</Typography>}
               >
-                <Divider variant="fullWidth" light={false} />
+                {client.projects.map((project) => (
+                  <TreeItem
+                    nodeId={clients.indexOf(client) + client.projects.indexOf(project) + 2}
+                    label={
+                      <Typography data-client={client.name} onClick={handleClick} variant="h5">
+                        {project.name}
+                      </Typography>
+                    }
+                  />
+                ))}
               </TreeItem>
-            ))}
-          </TreeView>
+            </TreeView>
+          ))}
         </Box>
 
         {/* INPUT BOX, add validations, connect to context */}
