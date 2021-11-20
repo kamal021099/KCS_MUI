@@ -1,5 +1,5 @@
 // ----------------------------------------------------------------------
 
-export const mockImgCover = (index) => `/meru130.png`;
-export const mockImgProduct = (index) => `/meru130.png`;
-export const mockImgAvatar = (index) => `/meru130.png`;
+export const mockImgCover = (index) => `/static/mock-images/covers/cover_${index}.jpg`;
+export const mockImgProduct = (index) => `/static/mock-images/products/product_${index}.jpg`;
+export const mockImgAvatar = (index) => `/static/mock-images/avatars/avatar_${index}.jpg`;

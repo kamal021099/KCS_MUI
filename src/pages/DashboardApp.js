@@ -3,18 +3,10 @@ import { Box, Grid, Container, Typography } from '@mui/material';
 // components
 import Page from '../components/Page';
 import {
-  AppTasks,
   Monthlyhours,
   AppBugReports,
   AppItemOrders,
-  AppNewsUpdate,
   Weeklyhours,
-  AppOrderTimeline,
-  AppCurrentVisits,
-  AppWebsiteVisits,
-  AppTrafficBySite,
-  AppCurrentSubject,
-  AppConversionRates,
   SimpleContainer
 } from '../components/_dashboard/app';
 

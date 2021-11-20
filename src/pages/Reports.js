@@ -1,10 +1,7 @@
 import * as React from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
-import { Box, Divider, Container } from '@mui/material';
+import { Box, Divider, Container, Typography, Paper } from '@mui/material';
 import Grid from '@mui/material/Grid';
-import SettingsIcon from '@mui/icons-material/Settings';
-import NoteIcon from '@mui/icons-material/Note';
-import PageHeader from '../components/PageHeader';
 import BasicTabs from '../components/_dashboard/muicomponents/BasicTabs';
 
 export default function SimpleContainer() {
@@ -13,9 +10,12 @@ export default function SimpleContainer() {
       <CssBaseline />
       <Container maxWidth="lg">
         {/* <PageHeader title="User" subTitle="Manager" icon={<AdminPanelSettingsIcon />} /> */}
-        <Box sx={{ bgcolor: '#f3e5f5', height: '300vh', width: 'xl' }}>
+        <Box sx={{ pb: 5 }}>
+          <Typography variant="h2">Reports</Typography>
+        </Box>
+        <Paper elevation="3" sx={{ height: '100%', width: 'xl' }}>
           <Grid item xs={3} sm={6} md={12}>
-            <PageHeader title="Reports" subTitle="" icon={<NoteIcon />} />
+            {/* <PageHeader title="Reports" subTitle="" icon={<NoteIcon />} /> */}
             {/* <Container
               style={{
                 padding: '1rem',
@@ -30,7 +30,7 @@ export default function SimpleContainer() {
             <Divider />
           </Grid>
           <BasicTabs />
-        </Box>
+        </Paper>
       </Container>
     </>
   );

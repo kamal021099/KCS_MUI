@@ -1,11 +1,7 @@
 // import './UserDetails.css';
 import { CssBaseline, Box, Container, Typography, Grid } from '@mui/material';
-import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
 
 import Sidebar from '../components/SideBar';
-import Timeline from '../components/Timeline';
-import PageHeader from '../components/PageHeader';
-import ScreenShots from '../components/ScreenShots';
 import {
   Monthlyhours,
   Weeklyhours,

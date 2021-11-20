@@ -35,7 +35,7 @@ export default function Main(props) {
   const { value, index, ...other } = props;
   const { User } = useContext(UserContext);
   const { clients } = useContext(ClientsContext);
-  const [Checked, setChecked] = useState(true);
+  const [Checked, setChecked] = useState();
   const handleLabelChange = (event) => {
     setChecked(event.target.checked);
     console.log(event.target.checked);
@@ -49,6 +49,7 @@ export default function Main(props) {
             <FormControlLabel
               sx={{ display: 'block', pt: 1, fontWeight: 10 }}
               control={<Switch checked={pro.Projectmembers.includes(User[index].name)} />}
+              // clients.projects.map((pro) => ))
               label={`${client.name}(${pro.name})`}
               onChange={handleLabelChange}
             />
@@ -70,7 +71,7 @@ export default function Main(props) {
       {value === index && (
         <Container
           component="div"
-          sx={{ border: 1, height: 'inherit' }}
+          sx={{ border: 1, height: '100%', overflow: 'hidden' }}
           role="tabpanel"
           hidden={value !== index}
           id={`vertical-tabpanel-${index}`}

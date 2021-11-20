@@ -6,8 +6,12 @@ import fileTextFill from '@iconify/icons-eva/file-text-fill';
 import lockFill from '@iconify/icons-eva/lock-fill';
 import personAddFill from '@iconify/icons-eva/person-add-fill';
 import alertTriangleFill from '@iconify/icons-eva/alert-triangle-fill';
+import PersonIcon from '@mui/icons-material/Person';
 import NoteIcon from '@mui/icons-material/Note';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
+import Description from '@mui/icons-material/Description';
+import SettingsIcon from '@mui/icons-material/Settings';
+import GroupIcon from '@mui/icons-material/Group';
 // ----------------------------------------------------------------------
 
 const getIcon = (name) => <Icon icon={name} width={22} height={22} />;
@@ -21,7 +25,7 @@ const sidebarConfig = [
   {
     title: 'user',
     path: '/dashboard/user',
-    icon: getIcon(peopleFill)
+    icon: <PersonIcon />
   },
   {
     title: 'Reports',
@@ -36,17 +40,17 @@ const sidebarConfig = [
   {
     title: 'Clients',
     path: '/dashboard/clients',
-    icon: getIcon(shoppingBagFill)
+    icon: <GroupIcon />
   },
   {
     title: 'Projects',
     path: '/dashboard/projects',
-    icon: getIcon(shoppingBagFill)
+    icon: <Description />
   },
   {
     title: 'Settings',
     path: '/dashboard/settings',
-    icon: getIcon(shoppingBagFill)
+    icon: <SettingsIcon />
   },
   // {
   //   title: 'blog',

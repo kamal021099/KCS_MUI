@@ -25,7 +25,7 @@ export const ClientsContextProvider = (props) => {
         },
         {
           name: 'Project 2',
-          Projectmembers: ['Ayush', 'Surya'],
+          Projectmembers: ['Ayush ', 'Surya'],
           rate: 300
         }
       ]

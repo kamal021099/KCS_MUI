@@ -74,7 +74,12 @@ export default function VerticalTabs() {
     >
       <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
         <Box component="div" sx={{ display: 'block' }}>
-          <TextField fullWidth id="outlined-search" label="Search client" type="search" />
+          <TextField
+            sx={{ width: '100%' }}
+            id="outlined-search"
+            label="Search client"
+            type="search"
+          />
         </Box>
         <Tabs
           orientation="vertical"
