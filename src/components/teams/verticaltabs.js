@@ -4,22 +4,10 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import PropTypes from 'prop-types';
-import { Box, styled, OutlinedInput, TextField } from '@mui/material';
-import { UserContext } from '../../contexts/UserContext';
+import { Box, styled, OutlinedInput, TextField, Autocomplete } from '@mui/material';
 import Main from './Main';
-
-const SearchStyle = styled(OutlinedInput)(({ theme }) => ({
-  width: 240,
-  transition: theme.transitions.create(['box-shadow', 'width'], {
-    easing: theme.transitions.easing.easeInOut,
-    duration: theme.transitions.duration.shorter
-  }),
-  '&.Mui-focused': { width: 320, boxShadow: theme.customShadows.z8 },
-  '& fieldset': {
-    borderWidth: `1px !important`,
-    borderColor: `${theme.palette.grey[500_32]} !important`
-  }
-}));
+import { UserContext } from '../../contexts/UserContext';
+import { ClientsContext } from '../../contexts/ClientsContext';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -56,44 +44,62 @@ function a11yProps(index) {
 
 export default function VerticalTabs() {
   const [value, setValue] = React.useState(0);
-
+  const { clients, changeClient } = useContext(ClientsContext);
   const { User } = useContext(UserContext);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
+  const handleSearch = (e, value) => {
+    const client = clients.filter((client) => (client.name === value ? client : ''));
+    if (client.length === 0) {
+      // eslint-disable-next-line no-useless-return
+      return;
+    }
+    return changeClient(client[0]);
+  };
+  const UsersList = [];
+  clients.forEach((client) => {
+    // eslint-disable-next-line prefer-template
+    User.map((User) => UsersList.push(User.name));
+  });
   return (
     <Box
       sx={{
-        bgcolor: 'background.paper',
+        maxHeight: '70vh',
+        height: '70vh',
+        width: '100%',
+        // margin: 'auto',
         display: 'grid',
-        gridTemplateColumns: '20% 80% ',
-        height: 400
-        // flexDirection: 'column'
+        gridTemplateColumns: '20% 80%',
+        backgroundColor: '#fdfdff'
       }}
     >
-      <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
-        <Box component="div" sx={{ display: 'block' }}>
-          <TextField
-            sx={{ width: '100%' }}
-            id="outlined-search"
-            label="Search client"
-            type="search"
+      <Box>
+        <div>
+          <Autocomplete
+            onChange={handleSearch}
+            disablePortal
+            id="combo-box-demo"
+            options={UsersList}
+            renderInput={(params) => <TextField {...params} fullWidth label="Search members" />}
           />
-        </Box>
+        </div>
         <Tabs
           orientation="vertical"
           variant="scrollable"
           value={value}
           onChange={handleChange}
-          aria-label="Vertical tabs example"
-          sx={{ borderRight: 1, borderColor: 'divider', display: 'block' }}
+          aria-label="Vertical tabs"
+          sx={{ borderRight: 1, borderColor: 'divider', display: 'block', width: '100%' }}
         >
           {User.map((user) => (
             <Tab
-              fullWidth
+              selectionFollowsFocus="true"
               label={
-                <Typography sx={{ textAlign: 'left' }} variant="h6">
+                <Typography
+                  sx={{ textAlign: 'left', width: '100%', fontWeight: 'Bold' }}
+                  variant="h6"
+                >
                   {user.name}{' '}
                 </Typography>
               }
@@ -104,11 +110,8 @@ export default function VerticalTabs() {
       </Box>
       <Box>
         {User.map((user) => (
-          <Main value={value} index={User.indexOf(user)} />
+          <Main value={value} index={User.indexOf(user)} sx={{ overflow: 'hidden' }} />
         ))}
-        {/* <TabPanel value={User[1].id} index={User[1].id} /> */}
-        {/* <TabPanel value={User[2].id} index={User[2].id} /> */}
-        {/* <TabPanel value={User[3].id} index={User[3].id} /> */}
       </Box>
     </Box>
   );

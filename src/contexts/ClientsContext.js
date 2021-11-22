@@ -1,3 +1,4 @@
+import { indexOf } from 'lodash-es';
 import React, { createContext, useState } from 'react';
 
 export const ClientsContext = createContext();
@@ -5,83 +6,30 @@ export const ClientsContext = createContext();
 export const ClientsContextProvider = (props) => {
   const [clients, setClients] = useState([
     {
-      name: 'Amazon',
-      Clientmembers: [
-        'Kamal',
-        'Ayush',
-        'Raksha',
-        'Jay Maethew',
-        'Surya',
-        'Ryan rands',
-        'Jacob lame',
-        'Sushma'
-      ],
       id: 1,
+      name: 'Amazon',
+      Clientmembers: ['Kamal', 'Ayush', 'Raksha', 'Mark', 'Surya', 'Zuckerberg', 'Jaya', 'Sushma'],
       projects: [
         {
           name: 'Project 1',
-          Projectmembers: ['Raksha', 'Jay Maethew', 'Surya'],
+          Projectmembers: ['Raksha', 'Mark', 'Surya'],
           rate: 200
         },
         {
           name: 'Project 2',
-          Projectmembers: ['Ayush ', 'Surya'],
+          Projectmembers: ['Ayush', 'Zuckerberg'],
           rate: 300
         }
       ]
     },
     {
-      name: 'Google',
-      Clientmembers: ['Kamal', 'Ayush', 'Surya', 'Ryan rands', 'Jacob lame', 'Sushma'],
       id: 2,
+      name: 'Google',
+      Clientmembers: ['Kamal', 'Ayush', 'Raksha', 'Mark', 'Surya', 'Zuckerberg', 'Jaya', 'Sushma'],
       projects: [
         {
           name: 'Project 3',
           Projectmembers: ['Jaya', 'Sushma'],
-          rate: 100
-        },
-        {
-          name: 'Project 4',
-          Projectmembers: ['Kamal', 'Ayush'],
-          rate: 50
-        }
-      ]
-    },
-    {
-      name: 'Naughty Dogs',
-
-      Clientmembers: ['Kamal', 'Ayush', 'Raksha', 'Jay Maethew', 'Surya', 'Ryan rands', 'Sushma'],
-      id: 2,
-      projects: [
-        {
-          name: 'Project 3',
-          Projectmembers: ['Jaya', 'Raksha'],
-          rate: 100
-        },
-        {
-          name: 'Project 4',
-          Projectmembers: ['Kamal', 'Ayush'],
-          rate: 50
-        }
-      ]
-    },
-    {
-      name: 'Unity',
-      Clientmembers: [
-        'Kamal',
-        'Ayush',
-        'Raksha',
-        'Jay Maethew',
-        'Surya',
-        'Ryan rands',
-        'Jacob lame',
-        'Sushma'
-      ],
-      id: 2,
-      projects: [
-        {
-          name: 'Project 3',
-          Projectmembers: ['Surya', 'Sushma'],
           rate: 100
         },
         {
@@ -106,10 +54,25 @@ export const ClientsContextProvider = (props) => {
     setClients((prevClients) => [...prevClients, client]);
   };
 
+  const updateClient = (client, index) => {
+    const newClients = [...clients];
+    console.log(newClients);
+    newClients[index] = client;
+    setClients(newClients);
+  };
+
   return (
     <div>
       <ClientsContext.Provider
-        value={{ clients, currentClient, changeClient, addClient, currentProject, changeProject }}
+        value={{
+          clients,
+          currentClient,
+          changeClient,
+          addClient,
+          currentProject,
+          changeProject,
+          updateClient
+        }}
       >
         {props.children}
       </ClientsContext.Provider>

@@ -3,18 +3,16 @@ import React, { useContext, useRef, useEffect, useState } from 'react';
 import { Grid, List, Paper, Autocomplete, Typography, Button, Divider } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import TreeView from '@mui/lab/TreeView';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import TreeItem from '@mui/lab/TreeItem';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
+import { indexOf } from 'lodash-es';
+import SettingsMain from './SettingsMain';
 import { ClientsContext } from '../../contexts/ClientsContext';
 
 function TabPanel(props) {
-  const { children, value, index, ...other } = props;
+  const { children, value, index, heading, ...other } = props;
 
   return (
     <div
@@ -60,12 +58,22 @@ const useStyles = makeStyles((theme) => ({
 export default function Sidebar() {
   const classes = useStyles();
 
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = React.useState({});
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
+  const effectiveArr = [
+    'Screenshot,Activity Level tracking',
+    'Apps & Urls tracking',
+    'Weekly time limit after',
+    'Auto-pause tracking after',
+    'Allow adding Offline time',
+    'Notify when Screenshot is taken',
+    'Week starts on',
+    'Currency symbol',
+    'Employee desktop application settings'
+  ];
   return (
     <div className={classes.root}>
       {/* SIDEBAR */}
@@ -94,16 +102,9 @@ export default function Sidebar() {
             aria-label="Vertical tabs example"
             sx={{ borderRight: 1, borderColor: 'divider' }}
           >
-            <Tab label="Screenshots" {...a11yProps(0)} />
-            <Tab label="Activity Level Tracking" {...a11yProps(1)} />
-            <Tab label="App & URL Tracking" {...a11yProps(2)} />
-            <Tab label="Weekly time limit" {...a11yProps(3)} />
-            <Tab label="Auto-pause tracking after" {...a11yProps(4)} />
-            <Tab label="Allow adding Offline Time" {...a11yProps(5)} />
-            <Tab label="Notify when screenshit is taken" {...a11yProps(6)} />
-            <Tab label="Week starts on" {...a11yProps(7)} />
-            <Tab label="Currency symbol" {...a11yProps(8)} />
-            <Tab label="Employee desktop application settings" {...a11yProps(9)} />
+            {effectiveArr.map((arr) => (
+              <Tab label={arr} {...a11yProps(effectiveArr.indexOf(arr))} />
+            ))}
           </Tabs>
         </Paper>
       </Box>
@@ -116,41 +117,16 @@ export default function Sidebar() {
           sx={{
             overflow: 'visible',
             height: '100%',
-            position: 'relative',
-            display: 'grid',
-            gridTemplateRows: '30% 70%'
+            position: 'relative'
+            // display: 'grid',
+            // gridTemplateRows: '30% 70%'
           }}
         >
-          <TabPanel value={value} index={0}>
-            Item One
-          </TabPanel>
-          <TabPanel value={value} index={1}>
-            Item Two
-          </TabPanel>
-          <TabPanel value={value} index={2}>
-            Item Three
-          </TabPanel>
-          <TabPanel value={value} index={3}>
-            Item Four
-          </TabPanel>
-          <TabPanel value={value} index={4}>
-            Item Five
-          </TabPanel>
-          <TabPanel value={value} index={5}>
-            Item Six
-          </TabPanel>
-          <TabPanel value={value} index={6}>
-            Item Seven
-          </TabPanel>
-          <TabPanel value={value} index={7}>
-            Item Eight
-          </TabPanel>
-          <TabPanel value={value} index={8}>
-            Item Nine
-          </TabPanel>
-          <TabPanel value={value} index={9}>
-            Item Ten
-          </TabPanel>
+          <Box>
+            {effectiveArr.map((arr) => (
+              <SettingsMain index={effectiveArr.indexOf(arr)} value={value} heading={arr} />
+            ))}
+          </Box>
         </Paper>
       </Box>
     </div>

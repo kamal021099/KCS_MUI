@@ -28,6 +28,8 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 export default function Header() {
+  const classes = useStyles();
+
   // to focus edit name of client
   const inputRef = useRef();
   const handleEditClick = (e) => {
@@ -35,9 +37,23 @@ export default function Header() {
   };
 
   // contexts
-  const { clients, currentClient, currentProject } = useContext(ClientsContext);
+  const { clients, currentClient, currentProject, changeProject, updateClient } =
+    useContext(ClientsContext);
 
-  const classes = useStyles();
+  const handleSwitchChange = (e, client, project, member) => {
+    const newClient = client;
+
+    const index = newClient.projects.indexOf(currentProject);
+    const members = newClient.projects[index].Projectmembers;
+    if (members.includes(member)) {
+      newClient.projects[index].Projectmembers.splice(members.indexOf(member), 1);
+      updateClient(newClient, clients.indexOf(currentClient));
+    } else {
+      newClient.projects[index].Projectmembers.push(member);
+      updateClient(newClient, clients.indexOf(currentClient));
+    }
+    console.log('hello');
+  };
 
   return (
     <>
@@ -107,6 +123,9 @@ export default function Header() {
                   {currentClient.Clientmembers.map((member) => (
                     <FormControlLabel
                       checked={currentProject.Projectmembers.includes(member)}
+                      onChange={(e) => {
+                        handleSwitchChange(e, currentClient, currentProject, member);
+                      }}
                       control={<Switch name={member} />}
                       label={member}
                     />

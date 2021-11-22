@@ -8,6 +8,8 @@ import {
   AppBugReports,
   AppItemOrders
 } from '../components/_dashboard/app';
+import ScreenShots from '../components/ScreenShots';
+import Timeline from '../components/Timeline';
 
 export default function UserDetails() {
   return (
@@ -35,10 +37,10 @@ export default function UserDetails() {
           </Grid>
         </Container>
         <Sidebar />
-        {/* <ScreenShots /> */}
-        {/* <Box sx={{ bgcolor: '#f3e5f5', height: '100vh', width: 'xl' }}>
+        <ScreenShots />
+        <Box sx={{ bgcolor: '#f3e5f5', height: '100vh', width: 'xl' }}>
           <Timeline />
-        </Box> */}
+        </Box>
       </Container>
     </>
   );

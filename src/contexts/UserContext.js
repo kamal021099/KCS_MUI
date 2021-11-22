@@ -9,56 +9,144 @@ export const UserContextProvider = (props) => {
       id: 1,
       email: 'ayushrocks@gmail.com',
       pay: 15,
-      role: 'Manager'
+      role: 'Manager',
+      Settings: {
+        ScreenShotPerHour: 12,
+        AllowBlur: true,
+        AppsAndUrlTracking: true,
+        WeeklyTimeLimit: 100,
+        AutoPause: 5,
+        OfflineTime: true,
+        NotifyUser: true,
+        WeekStart: 'sunday',
+        CurrencySymbol: 'rupees'
+      }
     },
     {
       name: 'kamal',
       id: 2,
       email: 'Kamali@gmail.com',
       pay: 12,
-      role: 'Admin'
+      role: 'Admin',
+      Settings: {
+        ScreenShotPerHour: 12,
+        AllowBlur: true,
+        AppsAndUrlTracking: true,
+        WeeklyTimeLimit: 100,
+        AutoPause: 5,
+        OfflineTime: true,
+        NotifyUser: true,
+        WeekStart: 'sunday',
+        CurrencySymbol: 'rupees'
+      }
     },
     {
       name: 'Jay Maethew',
       id: 3,
       email: 'jaymath@gmail.com',
       pay: 16,
-      role: 'Employee'
+      role: 'Employee',
+      Settings: {
+        ScreenShotPerHour: 12,
+        AllowBlur: true,
+        AppsAndUrlTracking: true,
+        WeeklyTimeLimit: 100,
+        AutoPause: 5,
+        OfflineTime: true,
+        NotifyUser: true,
+        WeekStart: 'sunday',
+        CurrencySymbol: 'rupees'
+      }
     },
     {
       name: 'Jacob lame',
       id: 4,
       email: 'jacoblame@gmail.com',
       pay: 10,
-      role: 'Employee'
+      role: 'Employee',
+      Settings: {
+        ScreenShotPerHour: 12,
+        AllowBlur: true,
+        AppsAndUrlTracking: true,
+        WeeklyTimeLimit: 100,
+        AutoPause: 5,
+        OfflineTime: true,
+        NotifyUser: true,
+        WeekStart: 'sunday',
+        CurrencySymbol: 'rupees'
+      }
     },
     {
       name: 'Ryan rands',
       id: 5,
       email: 'ryanr@gmail.com',
       pay: 19,
-      role: 'Manager'
+      role: 'Manager',
+      Settings: {
+        ScreenShotPerHour: 12,
+        AllowBlur: true,
+        AppsAndUrlTracking: true,
+        WeeklyTimeLimit: 100,
+        AutoPause: 5,
+        OfflineTime: true,
+        NotifyUser: true,
+        WeekStart: 'sunday',
+        CurrencySymbol: 'rupees'
+      }
     },
     {
       name: 'Raksha',
       id: 6,
       email: 'raksha@gmail.com',
       pay: 20,
-      role: 'Employee'
+      role: 'Employee',
+      Settings: {
+        ScreenShotPerHour: 12,
+        AllowBlur: true,
+        AppsAndUrlTracking: true,
+        WeeklyTimeLimit: 100,
+        AutoPause: 5,
+        OfflineTime: true,
+        NotifyUser: true,
+        WeekStart: 'sunday',
+        CurrencySymbol: 'rupees'
+      }
     },
     {
       name: 'Surya',
       id: 7,
       email: 'surya@gmail.com',
       pay: 13,
-      role: 'Employee'
+      role: 'Employee',
+      Settings: {
+        ScreenShotPerHour: 12,
+        AllowBlur: true,
+        AppsAndUrlTracking: true,
+        WeeklyTimeLimit: 100,
+        AutoPause: 5,
+        OfflineTime: true,
+        NotifyUser: true,
+        WeekStart: 'sunday',
+        CurrencySymbol: 'rupees'
+      }
     },
     {
       name: 'Sushma',
       id: 8,
       email: 'susma@gmail.com',
       pay: 13,
-      role: 'Employee'
+      role: 'Employee',
+      Settings: {
+        ScreenShotPerHour: 12,
+        AllowBlur: true,
+        AppsAndUrlTracking: true,
+        WeeklyTimeLimit: 100,
+        AutoPause: 5,
+        OfflineTime: true,
+        NotifyUser: true,
+        WeekStart: 'sunday',
+        CurrencySymbol: 'rupees'
+      }
     }
   ]);
   //   const [currentClient, setcurrentClient] = useState(User[0]);

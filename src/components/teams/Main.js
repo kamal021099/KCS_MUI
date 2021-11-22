@@ -71,14 +71,14 @@ export default function Main(props) {
       {value === index && (
         <Container
           component="div"
-          sx={{ border: 1, height: '100%', overflow: 'hidden' }}
+          sx={{ border: 1, height: '100%', overflow: 'scroll' }}
           role="tabpanel"
           hidden={value !== index}
           id={`vertical-tabpanel-${index}`}
           aria-labelledby={`vertical-tab-${index}`}
           {...other}
         >
-          <Typography>
+          <Typography sx={{ overflow: 'auto' }}>
             {' '}
             <Box sx={{ flexGrow: 1 }}>
               <Grid sx={{ display: 'flex', justifyContent: 'space-between' }} spacing={0}>
