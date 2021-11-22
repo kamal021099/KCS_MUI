@@ -38,6 +38,7 @@ TabPanel.propTypes = {
 };
 
 function a11yProps(index) {
+  console.log(index);
   return {
     id: `vertical-tab-${index}`,
     'aria-controls': `vertical-tabpanel-${index}`
@@ -58,22 +59,34 @@ const useStyles = makeStyles((theme) => ({
 export default function Sidebar() {
   const classes = useStyles();
 
-  const [value, setValue] = React.useState({});
+  const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  const effectiveArr = [
-    'Screenshot,Activity Level tracking',
-    'Apps & Urls tracking',
-    'Weekly time limit after',
-    'Auto-pause tracking after',
-    'Allow adding Offline time',
-    'Notify when Screenshot is taken',
-    'Week starts on',
-    'Currency symbol',
-    'Employee desktop application settings'
-  ];
+  let i = -1;
+  let j = -1;
+  const effectiveArr = {
+    'Screenshot,Activity Level tracking':
+      'How frequently screenshots will be taken .This number is an average since screenshots are taken at random intervals',
+    ' Track mouse and keyboard Activity Level ':
+      'How frequently screenshots will be taken .This number is an average since screenshots are taken at random intervals',
+    'Apps & Urls tracking':
+      'Track what applications your team members use and what websites they visit.',
+    'Weekly time limit after':
+      'Number of hours your employees are allowed to work. The tracking will stop when the limit is reached.The time zone for the time limit is always UTC',
+    'Auto-pause tracking after':
+      'Tracking will automatically pause after the specified period of inactivity and will automatically resume when user becomes active again.',
+    'Allow adding Offline time':
+      'Allow user to add time not tracked by the program to their timeline manually. It is often used to account for work away from a computer.',
+    'Notify when Screenshot is taken':
+      'Every time a screenshot is taken – a small notification will pop up for a couple of seconds next to the system tray saying that a Screenshot was taken.',
+    'Week starts on':
+      'When does your week start? This will be used when showing totals for a week or setting weekly time limits.',
+    'Currency symbol':
+      'The symbol (e.g. $, €, £) will be shown when you set hourly pay rates for your employees and everywhere where money is shown (like total amount spent today or on a specific project).',
+    'Employee desktop application settings': ''
+  };
   return (
     <div className={classes.root}>
       {/* SIDEBAR */}
@@ -102,9 +115,10 @@ export default function Sidebar() {
             aria-label="Vertical tabs example"
             sx={{ borderRight: 1, borderColor: 'divider' }}
           >
-            {effectiveArr.map((arr) => (
-              <Tab label={arr} {...a11yProps(effectiveArr.indexOf(arr))} />
-            ))}
+            {Object.entries(effectiveArr).forEach(([key, value]) => {
+              <Tab label={key} {...a11yProps((j += 1))} />;
+              console.log(key, j);
+            })}
           </Tabs>
         </Paper>
       </Box>
@@ -123,9 +137,9 @@ export default function Sidebar() {
           }}
         >
           <Box>
-            {effectiveArr.map((arr) => (
-              <SettingsMain index={effectiveArr.indexOf(arr)} value={value} heading={arr} />
-            ))}
+            {Object.entries(effectiveArr).forEach(([key, value]) => {
+              <SettingsMain value={value} index={(i += 1)} heading={key} subheading={value} />;
+            })}
           </Box>
         </Paper>
       </Box>

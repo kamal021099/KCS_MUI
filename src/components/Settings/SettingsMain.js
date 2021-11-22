@@ -42,7 +42,7 @@ TabPanel.propTypes = {
 };
 
 export default function SettingsMain(props) {
-  const { value, index, heading, ...other } = props;
+  const { value, index, heading, subheading, ...other } = props;
   const { User } = useContext(UserContext);
   const effectiveArr = [
     'Screenshot,Activity Level tracking',
@@ -69,7 +69,7 @@ export default function SettingsMain(props) {
         >
           <Typography variant="h3">{heading}</Typography>
           <Divider />
-          <Box sx={{ height: '20px', width: '100%', bgcolor: 'red' }}>box</Box>
+          <Box sx={{ height: '60px', width: '100%', bgcolor: '#bdf2bf' }}>{subheading}</Box>
         </Container>
       )}
     </>
