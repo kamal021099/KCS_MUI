@@ -11,8 +11,16 @@ import { indexOf } from 'lodash-es';
 import SettingsMain from './SettingsMain';
 import { ClientsContext } from '../../contexts/ClientsContext';
 
+function convertString(string) {
+  const str = string
+    .split(/(?=[A-Z])/)
+    .join()
+    .replaceAll(',', ' ');
+  // console.log(str);
+  return str;
+}
 function TabPanel(props) {
-  const { children, value, index, heading, ...other } = props;
+  const { children, value, index, heading, subheading, ...other } = props;
 
   return (
     <div
@@ -38,7 +46,6 @@ TabPanel.propTypes = {
 };
 
 function a11yProps(index) {
-  console.log(index);
   return {
     id: `vertical-tab-${index}`,
     'aria-controls': `vertical-tabpanel-${index}`
@@ -64,29 +71,31 @@ export default function Sidebar() {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  let i = -1;
-  let j = -1;
+  // let i = -1;
+  // let j = -1;
+
   const effectiveArr = {
-    'Screenshot,Activity Level tracking':
+    ScreenshotActivityLevelTracking:
       'How frequently screenshots will be taken .This number is an average since screenshots are taken at random intervals',
-    ' Track mouse and keyboard Activity Level ':
+    TrackMouseAndKeyboardActivityLevel:
       'How frequently screenshots will be taken .This number is an average since screenshots are taken at random intervals',
-    'Apps & Urls tracking':
+    AppsAndUrlsTracking:
       'Track what applications your team members use and what websites they visit.',
-    'Weekly time limit after':
+    WeeklyTimeLimitAfter:
       'Number of hours your employees are allowed to work. The tracking will stop when the limit is reached.The time zone for the time limit is always UTC',
-    'Auto-pause tracking after':
+    AutoPauseTrackingAfter:
       'Tracking will automatically pause after the specified period of inactivity and will automatically resume when user becomes active again.',
-    'Allow adding Offline time':
+    AllowAddingOfflineTime:
       'Allow user to add time not tracked by the program to their timeline manually. It is often used to account for work away from a computer.',
-    'Notify when Screenshot is taken':
+    NotifyWhenScreenshotIsTaken:
       'Every time a screenshot is taken – a small notification will pop up for a couple of seconds next to the system tray saying that a Screenshot was taken.',
-    'Week starts on':
+    WeekStartsOn:
       'When does your week start? This will be used when showing totals for a week or setting weekly time limits.',
-    'Currency symbol':
+    CurrencySymbol:
       'The symbol (e.g. $, €, £) will be shown when you set hourly pay rates for your employees and everywhere where money is shown (like total amount spent today or on a specific project).',
-    'Employee desktop application settings': ''
+    EmployeeDesktopApplicationSettings: ''
   };
+
   return (
     <div className={classes.root}>
       {/* SIDEBAR */}
@@ -115,10 +124,12 @@ export default function Sidebar() {
             aria-label="Vertical tabs example"
             sx={{ borderRight: 1, borderColor: 'divider' }}
           >
-            {Object.entries(effectiveArr).forEach(([key, value]) => {
-              <Tab label={key} {...a11yProps((j += 1))} />;
-              console.log(key, j);
-            })}
+            {Object.keys(effectiveArr).map((keyName, keyIndex) => (
+              <Tab label={convertString(keyName)} {...a11yProps(keyIndex)} />
+              // console.log(effectiveArr[keyName], keyIndex)
+            ))}
+            {/* <Tab label={effectiveArr[3].key} {...a11yProps(2)} />; //{' '}
+            <Tab label={effectiveArr[4].key} {...a11yProps(3)} />; console.log(key); */}
           </Tabs>
         </Paper>
       </Box>
@@ -137,9 +148,14 @@ export default function Sidebar() {
           }}
         >
           <Box>
-            {Object.entries(effectiveArr).forEach(([key, value]) => {
-              <SettingsMain value={value} index={(i += 1)} heading={key} subheading={value} />;
-            })}
+            {Object.keys(effectiveArr).map((keyName, keyIndex) => (
+              <SettingsMain
+                value={value}
+                index={keyIndex}
+                heading={convertString(keyName)}
+                subheading={effectiveArr[keyName]}
+              />
+            ))}
           </Box>
         </Paper>
       </Box>
