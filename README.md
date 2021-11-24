@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ## Minimal [(Free version)](https://minimal-kit-react.vercel.app/)
 
 ![license](https://img.shields.io/badge/license-MIT-blue.svg)
@@ -25,11 +26,14 @@
 - [Register](https://minimal-kit-react.vercel.app/register)
 - [Not Found](https://minimal-kit-react.vercel.app/404)
 
+=======
+>>>>>>> 6814f41b794e6d266cdfa1bb6706bc3d5a38f9c2
 ## Getting started
 
 - Recommended `node js 14+` and `npm 6+`
 - Install dependencies: `npm install` or `yarn install`
 - Start the server: `npm run start` or `yarn start`
+<<<<<<< HEAD
 
 ## License
 
@@ -38,3 +42,5 @@ Distributed under the MIT License. See [LICENSE](https://github.com/minimal-ui-k
 ## Contact us
 
 Email Us: support@minimals.cc
+=======
+>>>>>>> 6814f41b794e6d266cdfa1bb6706bc3d5a38f9c2

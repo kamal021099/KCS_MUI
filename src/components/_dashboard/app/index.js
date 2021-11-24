@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+export { default as SimpleContainer } from './SimpleContainer';
+>>>>>>> 6814f41b794e6d266cdfa1bb6706bc3d5a38f9c2
 export { default as AppBugReports } from './AppBugReports';
 export { default as AppConversionRates } from './AppConversionRates';
 export { default as AppCurrentSubject } from './AppCurrentSubject';

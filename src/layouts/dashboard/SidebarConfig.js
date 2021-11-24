@@ -6,7 +6,16 @@ import fileTextFill from '@iconify/icons-eva/file-text-fill';
 import lockFill from '@iconify/icons-eva/lock-fill';
 import personAddFill from '@iconify/icons-eva/person-add-fill';
 import alertTriangleFill from '@iconify/icons-eva/alert-triangle-fill';
+<<<<<<< HEAD
 
+=======
+import PersonIcon from '@mui/icons-material/Person';
+import NoteIcon from '@mui/icons-material/Note';
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
+import Description from '@mui/icons-material/Description';
+import SettingsIcon from '@mui/icons-material/Settings';
+import GroupIcon from '@mui/icons-material/Group';
+>>>>>>> 6814f41b794e6d266cdfa1bb6706bc3d5a38f9c2
 // ----------------------------------------------------------------------
 
 const getIcon = (name) => <Icon icon={name} width={22} height={22} />;
@@ -20,6 +29,7 @@ const sidebarConfig = [
   {
     title: 'user',
     path: '/dashboard/user',
+<<<<<<< HEAD
     icon: getIcon(peopleFill)
   },
   // {
@@ -27,6 +37,35 @@ const sidebarConfig = [
   //   path: '/dashboard/products',
   //   icon: getIcon(shoppingBagFill)
   // },
+=======
+    icon: <PersonIcon />
+  },
+  {
+    title: 'Reports',
+    path: '/dashboard/reports',
+    icon: <NoteIcon />
+  },
+  {
+    title: 'Teams',
+    path: '/dashboard/teams',
+    icon: <AdminPanelSettingsIcon />
+  },
+  {
+    title: 'Clients',
+    path: '/dashboard/clients',
+    icon: <GroupIcon />
+  },
+  {
+    title: 'Projects',
+    path: '/dashboard/projects',
+    icon: <Description />
+  },
+  {
+    title: 'Settings',
+    path: '/dashboard/settings',
+    icon: <SettingsIcon />
+  },
+>>>>>>> 6814f41b794e6d266cdfa1bb6706bc3d5a38f9c2
   // {
   //   title: 'blog',
   //   path: '/dashboard/blog',

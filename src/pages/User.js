@@ -193,7 +193,11 @@ export default function User() {
                             <Stack direction="row" alignItems="center" spacing={2}>
                               <Avatar alt={name} src={avatarUrl} />
                               <Typography variant="subtitle2" noWrap>
+<<<<<<< HEAD
                                 {name}
+=======
+                                <RouterLink to="/dashboard/userdetails">{name}</RouterLink>
+>>>>>>> 6814f41b794e6d266cdfa1bb6706bc3d5a38f9c2
                               </Typography>
                             </Stack>
                           </TableCell>

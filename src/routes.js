@@ -10,6 +10,15 @@ import Products from './pages/Products';
 import Blog from './pages/Blog';
 import User from './pages/User';
 import NotFound from './pages/Page404';
+<<<<<<< HEAD
+=======
+import Teams from './pages/Teams';
+import Reports from './pages/Reports';
+import UserDetails from './pages/UserDetails';
+import Clients from './pages/Clients';
+import Projects from './pages/Projects';
+import Settings from './pages/Settings';
+>>>>>>> 6814f41b794e6d266cdfa1bb6706bc3d5a38f9c2
 
 // ----------------------------------------------------------------------
 
@@ -23,7 +32,17 @@ export default function Router() {
         { path: 'app', element: <DashboardApp /> },
         { path: 'user', element: <User /> },
         { path: 'products', element: <Products /> },
+<<<<<<< HEAD
         { path: 'blog', element: <Blog /> }
+=======
+        { path: 'blog', element: <Blog /> },
+        { path: 'reports', element: <Reports /> },
+        { path: 'teams', element: <Teams /> },
+        { path: 'userdetails', element: <UserDetails /> },
+        { path: 'clients', element: <Clients /> },
+        { path: 'projects', element: <Projects /> },
+        { path: 'settings', element: <Settings /> }
+>>>>>>> 6814f41b794e6d266cdfa1bb6706bc3d5a38f9c2
       ]
     },
     {
@@ -37,6 +56,10 @@ export default function Router() {
         { path: '*', element: <Navigate to="/404" /> }
       ]
     },
+<<<<<<< HEAD
+=======
+    // { path: '#', element: <Navigate to="/UserDetails" /> },
+>>>>>>> 6814f41b794e6d266cdfa1bb6706bc3d5a38f9c2
     { path: '*', element: <Navigate to="/404" replace /> }
   ]);
 }
