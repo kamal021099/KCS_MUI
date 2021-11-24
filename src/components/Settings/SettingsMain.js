@@ -13,8 +13,10 @@ import {
   Radio,
   FormControlLabel,
   FormControl,
+  FormGroup,
   FormLabel,
-  RadioGroup
+  RadioGroup,
+  Switch
 } from '@mui/material';
 import Box from '@mui/material/Box';
 import PropTypes from 'prop-types';
@@ -105,7 +107,18 @@ function checkheading(index) {
   if (index === 4) {
     return (
       <>
-        <FormControlLabel value="Pause" control={<Radio />} label="Pause" />
+        <FormControlLabel value="Pause" control={<Radio />} label="Pause after" />
+        <TextField
+          sx={{ m: 1.5 }}
+          id="outlined-number"
+          label="Time limit"
+          type="number"
+          defaultValue="100"
+          InputLabelProps={{
+            shrink: true
+          }}
+        />{' '}
+        <Typography sx={{ mt: 3, mr: 2, fontSize: '20px' }}> minutes of user activity</Typography>
         <FormControlLabel value="Do not pause" control={<Radio />} label="Do not pause" />
       </>
     );
@@ -153,10 +166,13 @@ function checkheading(index) {
     );
   }
 }
+function userChange(user) {
+  return <>Hello{user}</>;
+}
 export default function SettingsMain(props) {
   const { value, index, heading, subheading, ...other } = props;
   const { User } = useContext(UserContext);
-
+  const { clients } = useContext(ClientsContext);
   const effectiveArr = [
     'Screenshot,Activity Level tracking',
     'Apps & Urls tracking',
@@ -191,6 +207,33 @@ export default function SettingsMain(props) {
                 {checkheading(index)}
               </RadioGroup>
             </FormControl>
+          </Box>
+          <Box sx={{ mt: 3 }}>
+            <Typography varinat="h3" sx={{ fontWeight: 'bold' }}>
+              Individual Settings
+            </Typography>
+            <Typography>
+              If enabled, individual settings will be used instead of the team Settings
+            </Typography>
+            <Box>
+              <Autocomplete
+                disablePortal
+                id="combo-box-demo"
+                options={['1', '2']}
+                sx={{ width: 300, mt: 4 }}
+                renderInput={(params) => <TextField {...params} label="User" />}
+              />
+              {User.map((user) => (
+                <FormGroup>
+                  <FormControlLabel
+                    control={<Switch />}
+                    label={user.name}
+                    onChange={userChange(user.name)}
+                  />
+                  {userChange()}
+                </FormGroup>
+              ))}
+            </Box>
           </Box>
         </Container>
       )}

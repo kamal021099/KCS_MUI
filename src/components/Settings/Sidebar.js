@@ -1,6 +1,6 @@
 /* eslint-disable consistent-return */
 import React, { useContext, useRef, useEffect, useState } from 'react';
-import { Grid, List, Paper, Autocomplete, Typography, Button, Divider } from '@mui/material';
+import { Paper, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import Box from '@mui/material/Box';
 import TreeItem from '@mui/lab/TreeItem';
@@ -10,15 +10,8 @@ import Tab from '@mui/material/Tab';
 import { indexOf } from 'lodash-es';
 import SettingsMain from './SettingsMain';
 import { ClientsContext } from '../../contexts/ClientsContext';
+import { convertString } from '../../contexts/UserContext';
 
-function convertString(string) {
-  const str = string
-    .split(/(?=[A-Z])/)
-    .join()
-    .replaceAll(',', ' ');
-  // console.log(str);
-  return str;
-}
 function TabPanel(props) {
   const { children, value, index, heading, subheading, ...other } = props;
 

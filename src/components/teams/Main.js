@@ -19,10 +19,11 @@ import {
 import PauseIcon from '@mui/icons-material/Pause';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ArchiveIcon from '@mui/icons-material/Archive';
+import { Link as RouterLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import EdiText from 'react-editext';
 import Snackbar from '../Snakbar';
-import { UserContext } from '../../contexts/UserContext';
+import { UserContext, convertString } from '../../contexts/UserContext';
 import { ClientsContext } from '../../contexts/ClientsContext';
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -60,11 +61,14 @@ export default function Main(props) {
   };
   const effectiveArr = [
     'Screenshot,Activity Level tracking',
+    'Allow Blur',
     'Apps & Urls tracking',
     'Weekly time limit after',
     'Auto-pause tracking after',
     'Allow adding Offline time',
-    'Notify when Screenshot is taken'
+    'Notify when Screenshot is taken',
+    'WeekStart',
+    'CurrencySymbol'
   ];
   return (
     <>
@@ -163,15 +167,22 @@ export default function Main(props) {
               <Link sx={{ pl: 1 }}>Remove all</Link>
               <Container sx={{ display: 'block' }}>{Labelconfig()}</Container>
             </Box>
-            <Box sx={{ pt: 2 }}>
-              <Typography variant="h5">Effective Settings</Typography>
-              {effectiveArr.map((arr) => (
-                <Box sx={{ display: 'flex', flexDirection: 'rows' }}>
-                  <Typography varihant="h6" sx={{ pr: 2, color: 'success' }}>
-                    {arr}
-                  </Typography>
-                  <Link sx={{ pr: 1 }}>Link</Link>
-                </Box>
+            <Box sx={{ pt: 2, fontSize: '20px' }}>
+              <Typography variant="h4">Effective Settings</Typography>
+              {Object.keys(User[index].Settings).map((keyName, keyIndex) => (
+                <>
+                  <Box sx={{ display: 'flex', flexDirection: 'rows' }}>
+                    <Typography varihant="h6" sx={{ pr: 2, fontSize: '20px', color: 'success' }}>
+                      {convertString(keyName)}
+                      {/* {console.log(index)} */}
+                    </Typography>
+                    <RouterLink to="/dashboard/settings" sx={{ pr: 1 }}>
+                      {User[index].Settings[keyName] === true
+                        ? 'On'
+                        : User[index].Settings[keyName]}
+                    </RouterLink>
+                  </Box>
+                </>
               ))}
             </Box>
           </Typography>

@@ -2,6 +2,14 @@ import React, { createContext, useState } from 'react';
 
 export const UserContext = createContext();
 
+export function convertString(string) {
+  const str = string
+    .split(/(?=[A-Z])/)
+    .join()
+    .replaceAll(',', ' ');
+  // console.log(str);
+  return str;
+}
 export const UserContextProvider = (props) => {
   const [User, setUser] = useState([
     {
