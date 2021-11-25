@@ -43,6 +43,13 @@ export const ClientsContextProvider = (props) => {
   const [currentClient, setcurrentClient] = useState(clients[0]);
   const [currentProject, setcurrentProject] = useState(currentClient.projects[0]);
 
+  // const [currentProjectmembers, setcurrentProjectmembers] = useState(
+  //   clients.projects(0).Projectmembers
+  // );
+
+  // const changeProjectmember = (member) => {
+  //   setcurrentProjectmembers(member);
+  // };
   const changeClient = (client) => {
     setcurrentClient(client);
   };
@@ -56,7 +63,7 @@ export const ClientsContextProvider = (props) => {
 
   const updateClient = (client, index) => {
     const newClients = [...clients];
-    console.log(newClients);
+    // console.log(newClients);
     newClients[index] = client;
     setClients(newClients);
   };
@@ -72,6 +79,7 @@ export const ClientsContextProvider = (props) => {
           currentProject,
           changeProject,
           updateClient
+          // changeProjectmember
         }}
       >
         {props.children}

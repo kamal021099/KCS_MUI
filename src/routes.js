@@ -16,7 +16,7 @@ import UserDetails from './pages/UserDetails';
 import Clients from './pages/Clients';
 import Projects from './pages/Projects';
 import Settings from './pages/Settings';
-
+import UserSettings from './pages/UserSettings';
 // ----------------------------------------------------------------------
 
 export default function Router() {
@@ -35,7 +35,8 @@ export default function Router() {
         { path: 'userdetails', element: <UserDetails /> },
         { path: 'clients', element: <Clients /> },
         { path: 'projects', element: <Projects /> },
-        { path: 'settings', element: <Settings /> }
+        { path: 'settings', element: <Settings /> },
+        { path: 'usersettings', element: <UserSettings /> }
       ]
     },
     {

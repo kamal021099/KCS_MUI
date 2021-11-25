@@ -3,11 +3,13 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import { Card } from '@material-ui/core';
 import Container from '@mui/material/Container';
+import { Link as RouterLink } from 'react-router-dom';
 // import { makeStyles } from '@mui/styles';
 // import  from '@mui/icons-material/AdminPanelSettings';
 // import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import SettingsIcon from '@mui/icons-material/Settings';
+import { Typography } from '@mui/material';
 import ApiRefRowsGrid from '../muicomponents/ThrottledRowsGrid';
 // import PageHeader from '../../PageHeader';
 
@@ -27,8 +29,13 @@ export default function SimpleContainer() {
                 justifyContent: 'space-between'
               }}
             >
-              Manager Dashboard
-              <SettingsIcon />
+              <Typography varinat="h3" sx={{ fontWeight: 'bold', fontSize: '23px' }}>
+                {' '}
+                Manager Dashboard
+              </Typography>
+              <RouterLink to="/dashboard/usersettings">
+                <SettingsIcon />
+              </RouterLink>
             </Container>
             <ApiRefRowsGrid />
           </Grid>

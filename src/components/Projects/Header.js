@@ -35,6 +35,7 @@ export default function Header() {
   const handleEditClick = (e) => {
     inputRef.current.focus();
   };
+  const test = useRef(false);
 
   // contexts
   const { clients, currentClient, currentProject, changeProject, updateClient } =
@@ -131,7 +132,6 @@ export default function Header() {
                     />
                   ))}
                 </FormGroup>
-                <FormHelperText>Be careful</FormHelperText>
               </FormControl>
             </Box>
           </Box>

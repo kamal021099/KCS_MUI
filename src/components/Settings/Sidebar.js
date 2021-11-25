@@ -118,7 +118,7 @@ export default function Sidebar() {
             sx={{ borderRight: 1, borderColor: 'divider' }}
           >
             {Object.keys(effectiveArr).map((keyName, keyIndex) => (
-              <Tab label={convertString(keyName)} {...a11yProps(keyIndex)} />
+              <Tab sx={{}} label={convertString(keyName)} {...a11yProps(keyIndex)} />
               // console.log(effectiveArr[keyName], keyIndex)
             ))}
             {/* <Tab label={effectiveArr[3].key} {...a11yProps(2)} />; //{' '}

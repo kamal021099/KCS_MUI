@@ -32,10 +32,18 @@ const Item = styled(Paper)(({ theme }) => ({
   textAlign: 'center',
   color: theme.palette.text.secondary
 }));
+
+// const handleSwitchChange = (e, project, user) => {
+//   if (project.Projectmembers.includes(user)) {
+//     project.Projectmembers.splice(project.Projectmembers.indexOf(user), 1);
+//     console.log(project.Projectmembers);
+//     // changeProjectmembers(user);
+//   }
+// };
 export default function Main(props) {
   const { value, index, ...other } = props;
   const { User } = useContext(UserContext);
-  const { clients } = useContext(ClientsContext);
+  const { clients, changeProjectmembers } = useContext(ClientsContext);
   const [Checked, setChecked] = useState();
   const handleLabelChange = (event) => {
     setChecked(event.target.checked);
@@ -52,24 +60,16 @@ export default function Main(props) {
               control={<Switch checked={pro.Projectmembers.includes(User[index].name)} />}
               // clients.projects.map((pro) => ))
               label={`${client.name}(${pro.name})`}
-              onChange={handleLabelChange}
+              // onChange={(e) => {
+              //   handleSwitchChange(e, pro, User.name);
+              // }}
             />
           ))
         )}
       </>
     );
   };
-  const effectiveArr = [
-    'Screenshot,Activity Level tracking',
-    'Allow Blur',
-    'Apps & Urls tracking',
-    'Weekly time limit after',
-    'Auto-pause tracking after',
-    'Allow adding Offline time',
-    'Notify when Screenshot is taken',
-    'WeekStart',
-    'CurrencySymbol'
-  ];
+
   return (
     <>
       {value === index && (

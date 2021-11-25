@@ -166,9 +166,11 @@ function checkheading(index) {
     );
   }
 }
+
 function userChange(user) {
   return <>Hello{user}</>;
 }
+
 export default function SettingsMain(props) {
   const { value, index, heading, subheading, ...other } = props;
   const { User } = useContext(UserContext);
@@ -184,6 +186,7 @@ export default function SettingsMain(props) {
     'Currency symbol',
     'Employee desktop application settings'
   ];
+  const test = false;
   return (
     <>
       {value === index && (
@@ -219,7 +222,7 @@ export default function SettingsMain(props) {
               <Autocomplete
                 disablePortal
                 id="combo-box-demo"
-                options={['1', '2']}
+                options={User.map((user) => user.name)}
                 sx={{ width: 300, mt: 4 }}
                 renderInput={(params) => <TextField {...params} label="User" />}
               />
@@ -230,7 +233,8 @@ export default function SettingsMain(props) {
                     label={user.name}
                     onChange={userChange(user.name)}
                   />
-                  {userChange()}
+                  {/* {userChange()} */}
+                  {test && <div>hello</div>}
                 </FormGroup>
               ))}
             </Box>
